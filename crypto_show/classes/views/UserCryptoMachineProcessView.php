@@ -46,26 +46,16 @@ class UserCryptoMachineProcessView extends WebPageTemplateView
     private function createAppropriateOutputMessage()
     {
         $output_content = '';
-        if (isset($this->authenticate_cm_results['input-error']))
+        if (isset($this->authenticate_cm_results['store_new_machine_result']))
         {
-            if ($this->authenticate_cm_results['input-error'] === false)
+            if ($this->authenticate_cm_results['store_new_machine_result'] === true)
             {
-                if (isset($this->authenticate_cm_results['user-authenticated']))
+                $output_content .= $this->createSuccessMessage();
+            }
+                else
                 {
-                    if ($this->authenticate_cm_results['user-authenticated'])
-                    {
-                        $output_content .= $this->createSuccessMessage();
-                    }
-                    else
-                    {
-                        $output_content .= $this->createErrorMessage();
-                    }
+                    $output_content .= $this->createErrorMessage();
                 }
-            }
-            else
-            {
-                $output_content .= $this->createErrorMessage();
-            }
         }
         else
         {
@@ -102,10 +92,9 @@ HTMLOUTPUT;
     private function createSuccessMessage()
     {
         $path_to_image = MEDIA_PATH . 'happy_face.jpg';
-        $cm_name = $this->authenticate_cm_results['cm-name'];
+        $cm_name = $this->authenticate_cm_results['validated-cm-name'];
         $page_content = <<< HTMLOUTPUT
 <p> $cm_name has been successfully stored!</p>
-<p><button name="feature" value="CM" /></button></p>
 HTMLOUTPUT;
         return $page_content;
     }

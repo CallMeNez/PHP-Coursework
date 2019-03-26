@@ -10,14 +10,12 @@ class UserCryptoMachineModel extends ModelAbstract
 {
     private $store_new_machine_result;
     private $validated_new_machine_details;
-    private $user_details;
 
     public function __construct()
     {
         parent::__construct();
         $this->store_new_machine_result = [];
         $this->validated_new_machine_details = '';
-        $this->user_details = [];
     }
 
     public function __destruct()
@@ -33,10 +31,6 @@ class UserCryptoMachineModel extends ModelAbstract
     public function setValidatedInput($sanitised_input)
     {
         $this->validated_new_machine_details = $sanitised_input;
-    }
-    public function setUserDetails($input)
-    {
-        $this->user_details = $input;
     }
 
     /**
