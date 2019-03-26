@@ -33,9 +33,10 @@ class UserCryptoMachineProcessController extends ControllerAbstract
 
         $cleaned['validated-cm-name'] = $validate->validateString('crypto_machine_name', $tainted, 1, 255);
         $cleaned['validated-cm-model'] = $validate->validateString('crypto_machine_model', $tainted, 1, 255);
-        $cleaned['validated-cm-description'] = $validate->validateString('crypto_machine_decription', $tainted, 1, 400);
+        $cleaned['validated-cm-description'] = $validate->validateString('crypto_machine_description', $tainted, 1, 400);
         $cleaned['validated-cm-coo'] = $validate->validateString('crypto_machine_country_of_origin', $tainted, 1, 255);
         $cleaned['validated-cm-image'] = $tainted['crypto_machine_image'];
+        $cleaned['validated-cm-nick'] = $validate->validateString('user_nickname', $tainted, 3, 20);
         $cleaned['input-error'] = $validate->checkForError($cleaned);
 
         return $cleaned;
@@ -50,8 +51,8 @@ class UserCryptoMachineProcessController extends ControllerAbstract
         $model->setDatabaseHandle($database);
 
         $model->setValidatedInput($validated_input);
-        $model->processCreateMachine();
-        $create_machine_result = $model->getCreateMachineResult();
+        $model->storeNewMachineDetails();
+        $create_machine_result = $model->getStoreNewMachineResult();
 
         return $create_machine_result;
     }
