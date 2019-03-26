@@ -78,7 +78,6 @@ class UserCryptoMachineProcessView extends WebPageTemplateView
     private function createPageBody()
     {
         $page_heading = 'Crypto Machine';
-
         $this->html_page_content = <<< HTMLFORM
 <h2>$page_heading</h2>
 $this->output_content
@@ -106,7 +105,7 @@ HTMLOUTPUT;
         $cm_name = $this->authenticate_cm_results['cm-name'];
         $page_content = <<< HTMLOUTPUT
 <p> $cm_name has been successfully stored!</p>
-<p><button name="feature" value="CM" /><img src="$path_to_image" alt="Happy face" /></button></p>
+<p><button name="feature" value="CM" /></button></p>
 HTMLOUTPUT;
         return $page_content;
     }

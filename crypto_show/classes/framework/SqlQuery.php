@@ -50,8 +50,16 @@
    $sql_query_string .= ' LIMIT 1';
    return $sql_query_string;
   }
-
   public static function queryFetchUserDetails()
+  {
+         $sql_query_string  = 'SELECT user_id, user_name, user_email, user_machine_count, user_registered_timestamp';
+         $sql_query_string .= ' FROM registered_user';
+         $sql_query_string .= ' WHERE user_nickname = :usernickname';
+         $sql_query_string .= ' LIMIT 1';
+         return $sql_query_string;
+  }
+
+  public static function queryFetchReducedUserDetails()
   {
    $sql_query_string  = 'SELECT user_id, user_machine_count';
    $sql_query_string .= ' FROM cryptoshow_db.registered_user';

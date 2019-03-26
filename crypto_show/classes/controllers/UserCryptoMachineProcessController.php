@@ -57,11 +57,11 @@ class UserCryptoMachineProcessController extends ControllerAbstract
         return $create_machine_result;
     }
 
-    private function createView($create_machine_results)
+    private function createView($create_machine_result)
     {
         $view = Factory::buildObject('UserCryptoMachineProcessView');
 
-        $view->setCreateMachineResult($create_machine_results);
+        $view->setCreateMachineResult($create_machine_result);
         $view->createOutputPage();
         $html_output = $view->getHtmlOutput();
 

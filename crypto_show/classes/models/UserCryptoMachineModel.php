@@ -51,7 +51,7 @@ class UserCryptoMachineModel extends ModelAbstract
     {
         $new_machine_details_stored = false;
         $user_nickname = $this->validated_new_machine_details['validated-cm-nick'];
-        $sql_query_string = SqlQuery::queryFetchUserDetails();
+        $sql_query_string = SqlQuery::queryFetchReducedUserDetails();
         $sql_query_parameters = [
             ':usernickname' => $this->validated_new_machine_details['validated-cm-nick'],
         ];
